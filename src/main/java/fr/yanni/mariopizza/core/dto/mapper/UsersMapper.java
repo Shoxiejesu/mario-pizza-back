@@ -1,15 +1,14 @@
 package fr.yanni.mariopizza.core.dto.mapper;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import fr.yanni.mariopizza.core.domain.Users;
 import fr.yanni.mariopizza.core.dto.UsersDTO;
 
 public class UsersMapper {
 
-	/**
-	 *
-	 * @param pizza a Pizza
-	 * @return the Pizza turned into its sibling PizzaDTO
-	 */
+	private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
 	public static UsersDTO usersToDto(final Users users) {
 		UsersDTO dto = null;
 
@@ -18,7 +17,7 @@ public class UsersMapper {
 
 			dto.setId(users.getId());
 			dto.setUsername(users.getUsername());
-			dto.setPassword(users.getPassword());
+			dto.setPassword(null);
 			dto.setFirstname(users.getFirstname());
 			dto.setLastname(users.getLastname());
 			dto.setAddress(users.getAddress());
@@ -28,12 +27,6 @@ public class UsersMapper {
 		return dto;
 	}
 
-	/**
-	 * Create a Pokemon from a PokemonDTO.
-	 *
-	 * @param dto the dto used as a source
-	 * @return a Pokemon filled with datas from dto
-	 */
 	public static Users dtoToEntity(UsersDTO dto) {
 		Users entity = null;
 
@@ -41,7 +34,7 @@ public class UsersMapper {
 			entity = new Users();
 			entity.setId(dto.getId());
 			entity.setUsername(dto.getUsername());
-			entity.setPassword(dto.getPassword());
+			entity.setPassword(hashPassword(dto.getPassword()));
 			entity.setFirstname(dto.getFirstname());
 			entity.setLastname(dto.getLastname());
 			entity.setAddress(dto.getAddress());
@@ -51,8 +44,11 @@ public class UsersMapper {
 		return entity;
 	}
 
-	public Boolean booleanMethod() {
-		return null;
+	private static String hashPassword(String plainPassword) {
+		return encoder.encode(plainPassword);
 	}
 
+	public static boolean checkPassword(String plainPassword, String hashedPassword) {
+		return encoder.matches(plainPassword, hashedPassword);
+	}
 }
