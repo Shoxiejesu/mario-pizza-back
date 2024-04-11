@@ -21,7 +21,6 @@ public class UsersMapper {
 			dto.setFirstname(users.getFirstname());
 			dto.setLastname(users.getLastname());
 			dto.setAddress(users.getAddress());
-
 		}
 
 		return dto;
@@ -30,7 +29,7 @@ public class UsersMapper {
 	public static Users dtoToEntity(UsersDTO dto) {
 		Users entity = null;
 
-		if (dto != null) {
+		if (dto != null && allInfoFilled(dto)) {
 			entity = new Users();
 			entity.setId(dto.getId());
 			entity.setUsername(dto.getUsername());
@@ -38,7 +37,6 @@ public class UsersMapper {
 			entity.setFirstname(dto.getFirstname());
 			entity.setLastname(dto.getLastname());
 			entity.setAddress(dto.getAddress());
-
 		}
 
 		return entity;
@@ -50,5 +48,10 @@ public class UsersMapper {
 
 	public static boolean checkPassword(String plainPassword, String hashedPassword) {
 		return encoder.matches(plainPassword, hashedPassword);
+	}
+
+	private static boolean allInfoFilled(UsersDTO dto) {
+		return dto.getUsername() != null && dto.getPassword() != null && dto.getFirstname() != null
+				&& dto.getLastname() != null && dto.getAddress() != null;
 	}
 }

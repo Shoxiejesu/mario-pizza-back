@@ -31,9 +31,9 @@ public class Pizza {
 
 	/** price of a pizza. */
 	@Column(name = "price")
-	private Short price;
+	private Double price;
 
-	public Pizza(Short id, String name, String description, String image, Short price) {
+	public Pizza(Short id, String name, String description, String image, Double price) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -79,11 +79,11 @@ public class Pizza {
 		this.image = image;
 	}
 
-	public Short getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(Short price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 

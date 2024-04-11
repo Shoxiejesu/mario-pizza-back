@@ -16,26 +16,26 @@ public final class PizzaService implements IPizzaService {
 
 	/** repository for the Pizza. */
 	@Autowired
-	private IPizzaRepository pokemonRepo;
+	private IPizzaRepository pizzaRepo;
 
 	@Override
 	public List<Pizza> getAllPokemons() {
-		return pokemonRepo.findAll();
+		return pizzaRepo.findAll();
 	}
 
 	@Override
 	public List<Pizza> getAllPokemonsFilteredByName(final String name) {
-		return pokemonRepo.findByNameStartingWith(name);
+		return pizzaRepo.findByNameStartingWith(name);
 	}
 
 	@Override
 	public Pizza getOne(final Short id) {
-		return pokemonRepo.getReferenceById(id);
+		return pizzaRepo.getReferenceById(id);
 	}
 
 	@Override
 	public Pizza save(final Pizza pizza) {
-		return pokemonRepo.saveAndFlush(pizza);
+		return pizzaRepo.saveAndFlush(pizza);
 	}
 
 }
