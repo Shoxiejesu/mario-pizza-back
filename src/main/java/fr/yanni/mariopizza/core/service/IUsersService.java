@@ -11,4 +11,6 @@ public interface IUsersService {
 	 */
 	Users save(Users users);
 
+	Users getUserByUsername(String username);
+
 }
