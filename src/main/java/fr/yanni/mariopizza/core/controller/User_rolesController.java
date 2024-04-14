@@ -20,10 +20,10 @@ public class User_rolesController {
 	private IUser_rolesService user_rolesService;
 
 	/**
-	 * Create or update a users.
+	 * Create or update a user_roles.
 	 *
-	 * @param users the users as a UsersDTO
-	 * @return the updated users
+	 * @param user_roles the user_roles as a User_rolesDTO
+	 * @return the updated user_roles
 	 */
 	@PostMapping("/")
 	public User_rolesDTO save(@RequestBody final User_rolesDTO user_roles) {

@@ -16,7 +16,7 @@ public class Order_lineService implements IOrder_lineService {
 	private IOrder_lineRepository order_lineRepo;
 
 	@Override
-	public Order_line save(final Order_line order_line) {
+	public final Order_line save(final Order_line order_line) {
 		return order_lineRepo.saveAndFlush(order_line);
 	}
 }

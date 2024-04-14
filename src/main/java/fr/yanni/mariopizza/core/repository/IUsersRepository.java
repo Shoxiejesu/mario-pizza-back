@@ -13,10 +13,14 @@ public interface IUsersRepository extends JpaRepository<Users, Short> {
 
 	/**
 	 *
-	 * @param name a filter
-	 * @return all pokemons whose name starts with the given name
+	 * @param username a filter
+	 * @return all users whose username starts with the given username
 	 */
 	List<Users> findByUsernameStartingWith(String username);
+
+	/**
+	 * Repository interface for managing Users entities.
+	 */
 
 	Optional<Users> findByUsername(String username);
 

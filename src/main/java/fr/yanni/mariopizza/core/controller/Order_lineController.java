@@ -20,10 +20,10 @@ public class Order_lineController {
 	private IOrder_lineService order_lineService;
 
 	/**
-	 * Create or update a order.
+	 * Create or update a order_line.
 	 *
-	 * @param order the order as a OrderDTO
-	 * @return the updated order
+	 * @param order_line the order_line as a Order_lineDTO
+	 * @return the updated order_line
 	 */
 	@PostMapping("/")
 	public Order_lineDTO save(@RequestBody final Order_lineDTO order_line) {

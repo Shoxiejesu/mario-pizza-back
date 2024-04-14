@@ -22,6 +22,13 @@ public class PizzaController {
 	@Autowired
 	private IPizzaService pizzaService;
 
+	/**
+	 * Get a pizza.
+	 *
+	 * @param pizza the pizza as a PizzaDTO
+	 * @return the updated pizza
+	 */
+
 	@GetMapping("/")
 	public List<PizzaDTO> getAll() {
 		return PizzaMapper.pizzasToDtos(pizzaService.getAllPokemons());

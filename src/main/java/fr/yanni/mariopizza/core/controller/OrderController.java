@@ -16,6 +16,10 @@ import fr.yanni.mariopizza.core.service.IOrderService;
 @RequestMapping("/order")
 public class OrderController {
 
+	/**
+	 * The order service.
+	 */
+
 	@Autowired
 	private IOrderService orderService;
 

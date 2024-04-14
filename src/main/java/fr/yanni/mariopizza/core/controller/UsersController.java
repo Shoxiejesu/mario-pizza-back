@@ -41,7 +41,7 @@ public class UsersController {
 	 * @return the user with the specified username
 	 */
 	@GetMapping("/{username}")
-	public ResponseEntity<UsersDTO> getUserByUsername(@PathVariable String username) {
+	public ResponseEntity<UsersDTO> getUserByUsername(@PathVariable final String username) {
 		UsersDTO user = UsersMapper.usersToDto(usersService.getUserByUsername(username));
 		if (user != null) {
 			return new ResponseEntity<>(user, HttpStatus.OK);
