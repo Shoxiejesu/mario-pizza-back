@@ -11,6 +11,12 @@ public interface IUsersService {
 	 */
 	Users save(Users users);
 
+	/**
+	 * Retrieve a user by their username.
+	 *
+	 * @param username the username of the user to retrieve
+	 * @return the user corresponding to the given username, or null if not found
+	 */
 	Users getUserByUsername(String username);
 
 }
