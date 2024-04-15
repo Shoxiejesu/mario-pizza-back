@@ -11,14 +11,14 @@ public interface IPizzaService {
 	 * @return all known pizzas
 	 */
 
-	List<Pizza> getAllPokemons();
+	List<Pizza> getAllPizzas();
 
 	/**
 	 *
 	 * @param name a filter
 	 * @return all pizza whose name starts with the given name
 	 */
-	List<Pizza> getAllPokemonsFilteredByName(String name);
+	List<Pizza> getAllPizzasFilteredByName(String name);
 
 	/**
 	 * Find a pokemon from its id.

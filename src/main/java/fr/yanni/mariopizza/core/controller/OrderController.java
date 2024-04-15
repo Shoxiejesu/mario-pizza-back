@@ -19,7 +19,6 @@ public class OrderController {
 	/**
 	 * The order service.
 	 */
-
 	@Autowired
 	private IOrderService orderService;
 

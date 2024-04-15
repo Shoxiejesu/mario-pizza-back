@@ -19,6 +19,9 @@ import fr.yanni.mariopizza.core.service.IPizzaService;
 
 public class PizzaController {
 
+	/**
+	 * The order service.
+	 */
 	@Autowired
 	private IPizzaService pizzaService;
 
@@ -31,14 +34,14 @@ public class PizzaController {
 
 	@GetMapping("/")
 	public List<PizzaDTO> getAll() {
-		return PizzaMapper.pizzasToDtos(pizzaService.getAllPokemons());
+		return PizzaMapper.pizzasToDtos(pizzaService.getAllPizzas());
 	}
 
 	/**
 	 * Find a pizza from its id.
 	 *
 	 * @param id the id of the pizza
-	 * @return athe pizza with the given id
+	 * @return the pizza with the given id
 	 */
 	@GetMapping("/{id}")
 	public PizzaDTO getOne(@PathVariable("id") final Short id) {

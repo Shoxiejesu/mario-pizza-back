@@ -20,6 +20,9 @@ import fr.yanni.mariopizza.core.service.IUsersService;
 @RequestMapping("/users")
 public class UsersController {
 
+	/**
+	 * The order service.
+	 */
 	@Autowired
 	private IUsersService usersService;
 

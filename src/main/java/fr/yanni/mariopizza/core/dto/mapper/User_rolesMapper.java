@@ -12,7 +12,7 @@ import fr.yanni.mariopizza.core.dto.User_rolesDTO;
 public class User_rolesMapper {
 	/**
 	 *
-	 * @param User_roles a User_roles
+	 * @param user_roles a user_roles
 	 * @return the User_roles turned into its sibling User_rolesDTO
 	 */
 	public static User_rolesDTO user_rolesToDto(final User_roles user_roles) {
@@ -54,6 +54,10 @@ public class User_rolesMapper {
 		return null;
 	}
 
+	/**
+	 * Teste la méthode user_rolesToDto() de la classe User_rolesMapper. Vérifie si
+	 * un objet User_roles est correctement converti en un objet User_rolesDTO.
+	 */
 	@Test
 	public void testUser_rolesToDto() {
 		// Créer une instance de User_roles pour tester
@@ -70,6 +74,10 @@ public class User_rolesMapper {
 		assertEquals(101, dto.getUser_id().intValue());
 	}
 
+	/**
+	 * Teste la méthode dtoToEntity() de la classe User_rolesMapper. Vérifie si un
+	 * objet User_rolesDTO est correctement converti en un objet User_roles.
+	 */
 	@Test
 	public void testDtoToEntity() {
 		// Créer une instance de User_rolesDTO pour tester
@@ -87,6 +95,10 @@ public class User_rolesMapper {
 
 	}
 
+	/**
+	 * Teste la méthode user_rolesToDto() de la classe User_rolesMapper avec une
+	 * entrée nulle. Vérifie si la méthode retourne null lorsque l'entrée est null.
+	 */
 	@Test
 	public void testUser_rolesToDtoWithNullInput() {
 		// Appeler la méthode à tester avec une entrée nulle
@@ -96,6 +108,10 @@ public class User_rolesMapper {
 		assertNull(dto);
 	}
 
+	/**
+	 * Teste la méthode dtoToEntity() de la classe User_rolesMapper avec une entrée
+	 * nulle. Vérifie si la méthode retourne null lorsque l'entrée est null.
+	 */
 	@Test
 	public void testDtoToEntityWithNullInput() {
 		// Appeler la méthode à tester avec une entrée nulle

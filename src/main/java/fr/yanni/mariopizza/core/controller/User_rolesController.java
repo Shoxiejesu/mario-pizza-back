@@ -16,6 +16,9 @@ import fr.yanni.mariopizza.core.service.IUser_rolesService;
 @RequestMapping("/user_roles")
 public class User_rolesController {
 
+	/**
+	 * The order service.
+	 */
 	@Autowired
 	private IUser_rolesService user_rolesService;
 

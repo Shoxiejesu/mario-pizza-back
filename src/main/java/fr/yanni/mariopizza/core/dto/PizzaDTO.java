@@ -2,30 +2,44 @@ package fr.yanni.mariopizza.core.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+/**
+ * Data Transfer Object (DTO) représentant une pizza.
+ */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PizzaDTO {
 
-	/** unique Id of a pizza. */
+	/** Identifiant unique de la pizza. */
 	private Short id;
 
-	/** name of the pizza. */
+	/** Nom de la pizza. */
 	private String name;
 
-	/** description pizza. */
+	/** Description de la pizza. */
 	private String description;
 
-	/** url for retrieving the picture of the pizza. */
+	/** URL pour récupérer l'image de la pizza. */
 	private String image;
 
-	/** health point of the pizza. */
+	/** Prix de la pizza. */
 	private Double price;
 
+	/**
+	 * Constructeur par défaut.
+	 */
 	public PizzaDTO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public PizzaDTO(Short id, String name, String description, String image, Double price) {
+	/**
+	 * Constructeur avec paramètres.
+	 *
+	 * @param id          Identifiant unique de la pizza
+	 * @param name        Nom de la pizza
+	 * @param description Description de la pizza
+	 * @param image       URL pour récupérer l'image de la pizza
+	 * @param price       Prix de la pizza
+	 */
+	public PizzaDTO(final Short id, String name, String description, String image, Double price) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -34,46 +48,101 @@ public class PizzaDTO {
 		this.price = price;
 	}
 
+	/**
+	 * Obtient l'identifiant unique de la pizza.
+	 *
+	 * @return L'identifiant unique de la pizza
+	 */
 	public Short getId() {
 		return id;
 	}
 
-	public void setId(Short id) {
+	/**
+	 * Définit l'identifiant unique de la pizza.
+	 *
+	 * @param id L'identifiant unique de la pizza à définir
+	 */
+	public void setId(final Short id) {
 		this.id = id;
 	}
 
+	/**
+	 * Obtient le nom de la pizza.
+	 *
+	 * @return Le nom de la pizza
+	 */
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	/**
+	 * Définit le nom de la pizza.
+	 *
+	 * @param name Le nom de la pizza à définir
+	 */
+	public void setName(final String name) {
 		this.name = name;
 	}
 
+	/**
+	 * Obtient la description de la pizza.
+	 *
+	 * @return La description de la pizza
+	 */
 	public String getDescription() {
 		return description;
 	}
 
-	public void setDescription(String description) {
+	/**
+	 * Définit la description de la pizza.
+	 *
+	 * @param description La description de la pizza à définir
+	 */
+	public void setDescription(final String description) {
 		this.description = description;
 	}
 
+	/**
+	 * Obtient l'URL pour récupérer l'image de la pizza.
+	 *
+	 * @return L'URL pour récupérer l'image de la pizza
+	 */
 	public String getImage() {
 		return image;
 	}
 
-	public void setImage(String image) {
+	/**
+	 * Définit l'URL pour récupérer l'image de la pizza.
+	 *
+	 * @param image L'URL pour récupérer l'image de la pizza à définir
+	 */
+	public void setImage(final String image) {
 		this.image = image;
 	}
 
+	/**
+	 * Obtient le prix de la pizza.
+	 *
+	 * @return Le prix de la pizza
+	 */
 	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(Double price) {
+	/**
+	 * Définit le prix de la pizza.
+	 *
+	 * @param price Le prix de la pizza à définir
+	 */
+	public void setPrice(final Double price) {
 		this.price = price;
 	}
 
+	/**
+	 * String representation of the object.
+	 *
+	 * @return String representation of the order.
+	 */
 	@Override
 	public String toString() {
 		return "PizzaDTO [id=" + id + ", name=" + name + ", description=" + description + ", image=" + image

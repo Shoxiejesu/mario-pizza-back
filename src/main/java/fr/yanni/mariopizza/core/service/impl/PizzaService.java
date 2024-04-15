@@ -19,12 +19,12 @@ public final class PizzaService implements IPizzaService {
 	private IPizzaRepository pizzaRepo;
 
 	@Override
-	public List<Pizza> getAllPokemons() {
+	public List<Pizza> getAllPizzas() {
 		return pizzaRepo.findAll();
 	}
 
 	@Override
-	public List<Pizza> getAllPokemonsFilteredByName(final String name) {
+	public List<Pizza> getAllPizzasFilteredByName(final String name) {
 		return pizzaRepo.findByNameStartingWith(name);
 	}
 
