@@ -1,5 +1,7 @@
 package fr.yanni.mariopizza.security.service.impl;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -7,6 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.yanni.mariopizza.security.models.Role;
 import fr.yanni.mariopizza.security.models.User;
 import fr.yanni.mariopizza.security.repository.UserRepository;
 import fr.yanni.mariopizza.security.utils.UserMapper;
@@ -52,13 +55,30 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	}
 
 	public boolean existsByUsername(String username) {
-		// TODO Auto-generated method stub
-		return false;
+		return userRepository.existsByUsername(username);
+
 	}
 
 	public void save(User user) {
-		// TODO Auto-generated method stub
+		userRepository.save(user);
 
+	}
+
+	public void addUserToRole(Long userId, Long roleId) {
+		User user = userRepository.findById(userId)
+				.orElseThrow(() -> new UsernameNotFoundException("User not found with ID: " + userId));
+
+		// Créez un objet Role avec l'ID spécifié
+		Role role = new Role();
+		role.setId(roleId.intValue()); // Convertissez Long en Integer
+
+		// Ajoutez le rôle à l'utilisateur
+		Set<Role> roles = user.getRoles();
+		roles.add(role);
+		user.setRoles(roles);
+
+		// Enregistrez les modifications dans la base de données
+		userRepository.save(user);
 	}
 
 }
