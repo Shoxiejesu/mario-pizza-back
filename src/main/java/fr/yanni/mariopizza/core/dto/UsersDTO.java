@@ -40,7 +40,8 @@ public class UsersDTO {
 	 * @param lastname  Nom de famille de l'utilisateur
 	 * @param address   Adresse de l'utilisateur
 	 */
-	public UsersDTO(final Short id, String username, String password, String firstname, String lastname, String address) {
+	public UsersDTO(final Short id, String username, String password, String firstname, String lastname,
+			String address) {
 		super();
 		this.id = id;
 		this.username = username;
