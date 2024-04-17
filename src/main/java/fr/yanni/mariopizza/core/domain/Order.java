@@ -33,20 +33,15 @@ public class Order {
 	private Short usr_id;
 
 	/** Date of the order. */
-	@Column(name = "date")
+	@Column(name = "date", insertable = false, updatable = false)
 	private String date;
 
 	/** Total_amount of the order. */
 	@Column(name = "total_amount")
 	private Double total_amount;
 
-
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<Order_line> orderLines = new ArrayList<>();
-    
-    
-    
-    
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+	private List<Order_line> orderLines = new ArrayList<>();
 
 	public Order() {
 		super();

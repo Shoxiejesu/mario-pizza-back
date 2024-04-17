@@ -15,7 +15,6 @@ public class OrderMapper {
 		if (order != null) {
 			dto = new OrderDTO();
 			dto.setUsr_id(order.getUsr_id());
-			dto.setDate(order.getDate());
 			dto.setTotal_amount(order.getTotal_amount());
 			dto.setOrderLines(orderLinesToDtos(order.getOrderLines()));
 		}
@@ -27,7 +26,6 @@ public class OrderMapper {
 		if (dto != null) {
 			entity = new Order();
 			entity.setUsr_id(dto.getUsr_id());
-			entity.setDate(dto.getDate());
 			entity.setTotal_amount(dto.getTotal_amount());
 			entity.setOrderLines(dtosToOrderLines(dto.getOrderLines(), entity)); // Passer l'entité Order
 		}

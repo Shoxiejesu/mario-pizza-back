@@ -10,9 +10,6 @@ public class OrderDTO {
 	/** Identifiant de l'utilisateur associé à cette commande. */
 	private Short usr_id;
 
-	/** Date de la commande. */
-	private String date;
-
 	/** Montant total de la commande. */
 	private Double total_amount;
 
@@ -26,10 +23,9 @@ public class OrderDTO {
 		this.orderLines = orderLines;
 	}
 
-	public OrderDTO(Short usr_id, String date, Double total_amount, List<Order_lineDTO> orderLines) {
+	public OrderDTO(Short usr_id, Double total_amount, List<Order_lineDTO> orderLines) {
 		super();
 		this.usr_id = usr_id;
-		this.date = date;
 		this.total_amount = total_amount;
 		this.orderLines = orderLines;
 	}
@@ -58,24 +54,6 @@ public class OrderDTO {
 	}
 
 	/**
-	 * Obtient la date de la commande.
-	 *
-	 * @return La date de la commande
-	 */
-	public String getDate() {
-		return date;
-	}
-
-	/**
-	 * Définit la date de la commande.
-	 *
-	 * @param date La date de la commande à définir
-	 */
-	public void setDate(final String date) {
-		this.date = date;
-	}
-
-	/**
 	 * Obtient le montant total de la commande.
 	 *
 	 * @return Le montant total de la commande
@@ -100,7 +78,7 @@ public class OrderDTO {
 	 */
 	@Override
 	public String toString() {
-		return "OrderDTO [usr_id=" + usr_id + ", date=" + date + ", total_amount=" + total_amount + "]";
+		return "OrderDTO [usr_id=" + usr_id + ", total_amount=" + total_amount + "]";
 	}
 
 }
