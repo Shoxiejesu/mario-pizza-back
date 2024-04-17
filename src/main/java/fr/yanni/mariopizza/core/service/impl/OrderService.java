@@ -1,5 +1,7 @@
 package fr.yanni.mariopizza.core.service.impl;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,5 +20,11 @@ public class OrderService implements IOrderService {
 	@Override
 	public Order save(final Order order) {
 		return orderRepo.saveAndFlush(order);
+	}
+
+	@Override
+	public Order getOrderById(Short id) {
+		Optional<Order> optionalOrder = orderRepo.findById(id);
+		return optionalOrder.orElse(null);
 	}
 }

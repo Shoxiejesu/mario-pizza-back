@@ -1,12 +1,11 @@
 package fr.yanni.mariopizza.core.dto;
 
+import java.util.List;
+
 /**
  * Data Transfer Object (DTO) représentant une commande.
  */
 public class OrderDTO {
-
-	/** Identifiant unique de la commande. */
-	private Short id;
 
 	/** Identifiant de l'utilisateur associé à cette commande. */
 	private Short usr_id;
@@ -17,45 +16,27 @@ public class OrderDTO {
 	/** Montant total de la commande. */
 	private Double total_amount;
 
-	/**
-	 * Constructeur par défaut.
-	 */
-	public OrderDTO() {
-		super();
+	private List<Order_lineDTO> orderLines;
+
+	public List<Order_lineDTO> getOrderLines() {
+		return orderLines;
 	}
 
-	/**
-	 * Constructeur avec paramètres.
-	 *
-	 * @param id           Identifiant unique de la commande
-	 * @param usr_id       Identifiant de l'utilisateur associé
-	 * @param date         Date de la commande
-	 * @param total_amount Montant total de la commande
-	 */
-	public OrderDTO(final Short id, Short usr_id, String date, Double total_amount) {
+	public void setOrderLines(List<Order_lineDTO> orderLines) {
+		this.orderLines = orderLines;
+	}
+
+	public OrderDTO(Short usr_id, String date, Double total_amount, List<Order_lineDTO> orderLines) {
 		super();
-		this.id = id;
 		this.usr_id = usr_id;
 		this.date = date;
 		this.total_amount = total_amount;
+		this.orderLines = orderLines;
 	}
 
-	/**
-	 * Obtient l'identifiant de la commande.
-	 *
-	 * @return L'identifiant de la commande
-	 */
-	public Short getId() {
-		return id;
-	}
-
-	/**
-	 * Définit l'identifiant de la commande.
-	 *
-	 * @param id L'identifiant de la commande à définir
-	 */
-	public void setId(final Short id) {
-		this.id = id;
+	public OrderDTO() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -119,7 +100,7 @@ public class OrderDTO {
 	 */
 	@Override
 	public String toString() {
-		return "OrderDTO [id=" + id + ", usr_id=" + usr_id + ", date=" + date + ", total_amount=" + total_amount + "]";
+		return "OrderDTO [usr_id=" + usr_id + ", date=" + date + ", total_amount=" + total_amount + "]";
 	}
 
 }

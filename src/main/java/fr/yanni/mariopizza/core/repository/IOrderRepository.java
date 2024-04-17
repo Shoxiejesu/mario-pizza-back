@@ -7,6 +7,6 @@ import fr.yanni.mariopizza.core.domain.Order;
 
 @Repository
 
-public interface IOrderRepository extends JpaRepository<Order, Long> {
+public interface IOrderRepository extends JpaRepository<Order, Short> {
 
 }

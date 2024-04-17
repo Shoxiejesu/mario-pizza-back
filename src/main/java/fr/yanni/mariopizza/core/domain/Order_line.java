@@ -4,7 +4,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 /**
@@ -16,12 +20,13 @@ import jakarta.persistence.Table;
 public class Order_line {
 	/** Unique ID of an order line. */
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Short id;
 
-	/** Order ID of the order. */
-	@Column(name = "ord_id")
-	private Short ord_id;
+	@ManyToOne
+	@JoinColumn(name = "ord_id", referencedColumnName = "id")
+	private Order order;
 
 	/** Pizza ID of the ordered pizza. */
 	@Column(name = "piz_id")
@@ -31,108 +36,54 @@ public class Order_line {
 	@Column(name = "quantity")
 	private Short quantity;
 
-	/**
-	 * Default constructor.
-	 */
 	public Order_line() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * Parameterized constructor.
-	 *
-	 * @param id       The unique ID of the order line (Short).
-	 * @param ord_id   The order ID (Short).
-	 * @param piz_id   The pizza ID (Short).
-	 * @param quantity The quantity of the ordered pizza (Short).
-	 */
-	public Order_line(final Short id, Short ord_id, Short piz_id, Short quantity) {
+	public Order_line(Short id, Order order, Short piz_id, Short quantity) {
 		super();
 		this.id = id;
-		this.ord_id = ord_id;
+		this.order = order;
 		this.piz_id = piz_id;
 		this.quantity = quantity;
 	}
 
-	/**
-	 * Getter for ID.
-	 *
-	 * @return The ID of the order line (Short).
-	 */
 	public Short getId() {
 		return id;
 	}
 
-	/**
-	 * Setter for ID.
-	 *
-	 * @param id The ID to set (Short).
-	 */
-	public void setId(final Short id) {
+	public void setId(Short id) {
 		this.id = id;
 	}
 
-	/**
-	 * Getter for order ID.
-	 *
-	 * @return The order ID (Short).
-	 */
-	public Short getOrd_id() {
-		return ord_id;
+	public Order getOrder() {
+		return order;
 	}
 
-	/**
-	 * Setter for order ID.
-	 *
-	 * @param ord_id The order ID to set (Short).
-	 */
-	public void setOrd_id(final Short ord_id) {
-		this.ord_id = ord_id;
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
-	/**
-	 * Getter for pizza ID.
-	 *
-	 * @return The pizza ID (Short).
-	 */
 	public Short getPiz_id() {
 		return piz_id;
 	}
 
-	/**
-	 * Setter for pizza ID.
-	 *
-	 * @param piz_id The pizza ID to set (Short).
-	 */
-	public void setPiz_id(final Short piz_id) {
+	public void setPiz_id(Short piz_id) {
 		this.piz_id = piz_id;
 	}
 
-	/**
-	 * Getter for quantity.
-	 *
-	 * @return The quantity of the ordered pizza (Short).
-	 */
 	public Short getQuantity() {
 		return quantity;
 	}
 
-	/**
-	 * Setter for quantity.
-	 *
-	 * @param quantity The quantity to set (Short).
-	 */
-	public void setQuantity(final Short quantity) {
+	public void setQuantity(Short quantity) {
 		this.quantity = quantity;
 	}
 
-	/**
-	 * String representation of the object.
-	 *
-	 * @return String representation of the order line.
-	 */
 	@Override
 	public String toString() {
-		return "Order_line [id=" + id + ", ord_id=" + ord_id + ", piz_id=" + piz_id + ", quantity=" + quantity + "]";
+		return "Order_line [id=" + id + ", order=" + order + ", piz_id=" + piz_id + ", quantity=" + quantity + "]";
 	}
+
 }

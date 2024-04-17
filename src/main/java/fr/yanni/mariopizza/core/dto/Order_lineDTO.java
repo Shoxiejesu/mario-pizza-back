@@ -4,8 +4,6 @@ package fr.yanni.mariopizza.core.dto;
  * Data Transfer Object (DTO) représentant une ligne de commande d'une commande.
  */
 public class Order_lineDTO {
-	/** Identifiant unique de la ligne de commande. */
-	private Short id;
 
 	/** Identifiant de la commande associée à cette ligne. */
 	private Short ord_id;
@@ -31,30 +29,11 @@ public class Order_lineDTO {
 	 * @param piz_id   Identifiant de la pizza associée
 	 * @param quantity Quantité de pizzas commandées
 	 */
-	public Order_lineDTO(Short id, Short ord_id, Short piz_id, Short quantity) {
+	public Order_lineDTO(Short ord_id, Short piz_id, Short quantity) {
 		super();
-		this.id = id;
 		this.ord_id = ord_id;
 		this.piz_id = piz_id;
 		this.quantity = quantity;
-	}
-
-	/**
-	 * Obtient l'identifiant de la ligne de commande.
-	 *
-	 * @return L'identifiant de la ligne de commande
-	 */
-	public Short getId() {
-		return id;
-	}
-
-	/**
-	 * Définit l'identifiant de la ligne de commande.
-	 *
-	 * @param id L'identifiant de la ligne de commande à définir
-	 */
-	public void setId(final Short id) {
-		this.id = id;
 	}
 
 	/**
@@ -118,6 +97,6 @@ public class Order_lineDTO {
 	 */
 	@Override
 	public String toString() {
-		return "Order_lineDTO [id=" + id + ", ord_id=" + ord_id + ", piz_id=" + piz_id + ", quantity=" + quantity + "]";
+		return "Order_lineDTO [ord_id=" + ord_id + ", piz_id=" + piz_id + ", quantity=" + quantity + "]";
 	}
 }

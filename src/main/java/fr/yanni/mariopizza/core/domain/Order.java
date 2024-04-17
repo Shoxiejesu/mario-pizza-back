@@ -1,10 +1,17 @@
 package fr.yanni.mariopizza.core.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
@@ -17,6 +24,7 @@ public class Order {
 
 	/** Unique ID of an order. */
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Short id;
 
@@ -32,109 +40,72 @@ public class Order {
 	@Column(name = "total_amount")
 	private Double total_amount;
 
-	/**
-	 * Default constructor.
-	 */
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<Order_line> orderLines = new ArrayList<>();
+    
+    
+    
+    
+
 	public Order() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * Parameterized constructor.
-	 *
-	 * @param id           The unique ID of the order.
-	 * @param usr_id       The user ID placing the order.
-	 * @param date         The date of the order.
-	 * @param total_amount The total amount of the order.
-	 */
-	public Order(final Short id, Short usr_id, String date, Double total_amount) {
+	public Order(Short id, Short usr_id, String date, Double total_amount, List<Order_line> orderLines) {
 		super();
 		this.id = id;
 		this.usr_id = usr_id;
 		this.date = date;
 		this.total_amount = total_amount;
+		this.orderLines = orderLines;
 	}
 
-	/**
-	 * Getter for ID.
-	 *
-	 * @return The ID of the order.
-	 */
 	public Short getId() {
 		return id;
 	}
 
-	/**
-	 * Setter for ID.
-	 *
-	 * @param id The ID to set.
-	 */
-	public void setId(final Short id) {
+	public void setId(Short id) {
 		this.id = id;
 	}
 
-	/**
-	 * Getter for user ID.
-	 *
-	 * @return The user ID placing the order.
-	 */
 	public Short getUsr_id() {
 		return usr_id;
 	}
 
-	/**
-	 * Setter for user ID.
-	 *
-	 * @param usr_id The user ID to set.
-	 */
-	public void setUsr_id(final Short usr_id) {
+	public void setUsr_id(Short usr_id) {
 		this.usr_id = usr_id;
 	}
 
-	/**
-	 * Getter for date.
-	 *
-	 * @return The date of the order.
-	 */
 	public String getDate() {
 		return date;
 	}
 
-	/**
-	 * Setter for date.
-	 *
-	 * @param date The date to set.
-	 */
-	public void setDate(final String date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
-	/**
-	 * Getter for total amount.
-	 *
-	 * @return The total amount of the order.
-	 */
 	public Double getTotal_amount() {
 		return total_amount;
 	}
 
-	/**
-	 * Setter for total amount.
-	 *
-	 * @param total_amount The total amount to set.
-	 */
-	public void setTotal_amount(final Double total_amount) {
+	public void setTotal_amount(Double total_amount) {
 		this.total_amount = total_amount;
 	}
 
-	/**
-	 * String representation of the object.
-	 *
-	 * @return String representation of the order.
-	 */
+	public List<Order_line> getOrderLines() {
+		return orderLines;
+	}
+
+	public void setOrderLines(List<Order_line> orderLines) {
+		this.orderLines = orderLines;
+	}
+
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", usr_id=" + usr_id + ", date=" + date + ", total_amount=" + total_amount + "]";
+		return "Order [id=" + id + ", usr_id=" + usr_id + ", date=" + date + ", total_amount=" + total_amount
+				+ ", orderLines=" + orderLines + "]";
 	}
 
 }

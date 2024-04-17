@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.yanni.mariopizza.core.domain.Order;
 import fr.yanni.mariopizza.core.dto.OrderDTO;
 import fr.yanni.mariopizza.core.dto.mapper.OrderMapper;
 import fr.yanni.mariopizza.core.service.IOrderService;
@@ -30,6 +31,16 @@ public class OrderController {
 	 */
 	@PostMapping("/")
 	public OrderDTO save(@RequestBody final OrderDTO order) {
-		return OrderMapper.orderToDto(orderService.save(OrderMapper.dtoToEntity(order)));
+		// Créer une nouvelle instance d'Order
+		Order newOrder = new Order();
+
+		// Mapper l'OrderDTO reçu à l'entité Order
+		Order mappedOrder = OrderMapper.dtoToEntity(order);
+
+		// Enregistrer la commande
+		Order savedOrder = orderService.save(mappedOrder);
+
+		// Mapper l'entité Order sauvegardée à un OrderDTO
+		return OrderMapper.orderToDto(savedOrder);
 	}
 }
