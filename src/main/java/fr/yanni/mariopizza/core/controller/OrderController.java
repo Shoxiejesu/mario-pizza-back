@@ -17,30 +17,16 @@ import fr.yanni.mariopizza.core.service.IOrderService;
 @RequestMapping("/order")
 public class OrderController {
 
-	/**
-	 * The order service.
-	 */
 	@Autowired
 	private IOrderService orderService;
 
-	/**
-	 * Create or update a order.
-	 *
-	 * @param order the order as a OrderDTO
-	 * @return the updated order
-	 */
+	@Autowired
+	private OrderMapper orderMapper;
+
 	@PostMapping("/")
 	public OrderDTO save(@RequestBody final OrderDTO order) {
-		// Créer une nouvelle instance d'Order
-		Order newOrder = new Order();
-
-		// Mapper l'OrderDTO reçu à l'entité Order
-		Order mappedOrder = OrderMapper.dtoToEntity(order);
-
-		// Enregistrer la commande
-		Order savedOrder = orderService.save(mappedOrder);
-
-		// Mapper l'entité Order sauvegardée à un OrderDTO
-		return OrderMapper.orderToDto(savedOrder);
+		Order newOrder = orderMapper.dtoToEntity(order);
+		Order savedOrder = orderService.save(newOrder);
+		return orderMapper.orderToDto(savedOrder);
 	}
 }

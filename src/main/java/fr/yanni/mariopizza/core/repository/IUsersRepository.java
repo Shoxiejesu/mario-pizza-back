@@ -24,4 +24,6 @@ public interface IUsersRepository extends JpaRepository<Users, Short> {
 
 	Optional<Users> findByUsername(String username);
 
+	Short findIdByUsername(String username);
+
 }

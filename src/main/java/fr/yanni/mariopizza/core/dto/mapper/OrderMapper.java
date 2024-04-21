@@ -3,14 +3,22 @@ package fr.yanni.mariopizza.core.dto.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
+
 import fr.yanni.mariopizza.core.domain.Order;
 import fr.yanni.mariopizza.core.domain.Order_line;
 import fr.yanni.mariopizza.core.dto.OrderDTO;
 import fr.yanni.mariopizza.core.dto.Order_lineDTO;
 import fr.yanni.mariopizza.core.service.impl.OrderService;
+import fr.yanni.mariopizza.security.service.impl.UserDetailsServiceImpl;
+
+@Component
 
 public class OrderMapper {
-	public static OrderDTO orderToDto(final Order order) {
+	public OrderDTO orderToDto(final Order order) {
 		OrderDTO dto = null;
 		if (order != null) {
 			dto = new OrderDTO();
@@ -21,15 +29,30 @@ public class OrderMapper {
 		return dto;
 	}
 
-	public static Order dtoToEntity(OrderDTO dto) {
+	@Autowired
+	private UserDetailsServiceImpl userService;
+
+	public Order dtoToEntity(OrderDTO dto) {
 		Order entity = null;
 		if (dto != null) {
 			entity = new Order();
-			entity.setUsr_id(dto.getUsr_id());
+			Long userId = getLoggedInUserId();
+			if (userId != null) {
+				entity.setUsr_id(userId.shortValue());
+			}
 			entity.setTotal_amount(dto.getTotal_amount());
-			entity.setOrderLines(dtosToOrderLines(dto.getOrderLines(), entity)); // Passer l'entité Order
+			entity.setOrderLines(dtosToOrderLines(dto.getOrderLines(), entity));
 		}
 		return entity;
+	}
+
+	private Long getLoggedInUserId() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal instanceof UserDetails) {
+			UserDetails userDetails = (UserDetails) principal;
+			return userService.getUserIdByUsername(userDetails.getUsername());
+		}
+		return null;
 	}
 
 	public static Order_lineDTO orderLineToDto(final Order_line orderLine) {
@@ -45,7 +68,7 @@ public class OrderMapper {
 		return dto;
 	}
 
-	public static Order_line dtoToOrderLine(Order_lineDTO dto) {
+	public Order_line dtoToOrderLine(Order_lineDTO dto) {
 		Order_line entity = null;
 		if (dto != null) {
 			entity = new Order_line();
@@ -56,7 +79,7 @@ public class OrderMapper {
 		return entity;
 	}
 
-	public static Order getOrderById(Short id) {
+	public Order getOrderById(Short id) {
 		// Code pour récupérer l'objet Order à partir de son ID
 		OrderService orderService = new OrderService(); // Supposons que vous avez un service OrderService
 
@@ -65,7 +88,7 @@ public class OrderMapper {
 		return order;
 	}
 
-	private static List<Order_lineDTO> orderLinesToDtos(List<Order_line> orderLines) {
+	private List<Order_lineDTO> orderLinesToDtos(List<Order_line> orderLines) {
 		List<Order_lineDTO> dtos = new ArrayList<>();
 		if (orderLines != null) {
 			for (Order_line orderLine : orderLines) {
@@ -75,7 +98,7 @@ public class OrderMapper {
 		return dtos;
 	}
 
-	private static List<Order_line> dtosToOrderLines(List<Order_lineDTO> dtos, Order order) {
+	private List<Order_line> dtosToOrderLines(List<Order_lineDTO> dtos, Order order) {
 		List<Order_line> orderLines = new ArrayList<>();
 		if (dtos != null) {
 			for (Order_lineDTO dto : dtos) {

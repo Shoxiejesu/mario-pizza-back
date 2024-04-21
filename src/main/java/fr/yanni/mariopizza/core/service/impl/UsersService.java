@@ -27,4 +27,15 @@ public class UsersService implements IUsersService {
 		Optional<Users> userOptional = usersRepo.findByUsername(username);
 		return userOptional.orElse(null);
 	}
+
+	@Override
+	public Short getUserIdByUsername(String username) {
+		Users user = getUserByUsername(username);
+		if (user != null) {
+			return user.getId();
+		} else {
+			throw new RuntimeException("User not found for username: " + username);
+		}
+	}
+
 }

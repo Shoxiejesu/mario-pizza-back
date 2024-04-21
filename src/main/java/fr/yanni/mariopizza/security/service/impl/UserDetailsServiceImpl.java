@@ -43,6 +43,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		return user;
 	}
 
+	public Long getUserIdByUsername(String username) {
+		User user = userRepository.findByUsername(username)
+				.orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
+		return user.getId();
+	}
+
 	/**
 	 * Update or create a user.
 	 *

@@ -19,4 +19,6 @@ public interface IUsersService {
 	 */
 	Users getUserByUsername(String username);
 
+	Short getUserIdByUsername(String username);
+
 }
