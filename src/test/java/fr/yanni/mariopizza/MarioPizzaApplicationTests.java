@@ -10,9 +10,14 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import fr.yanni.mariopizza.core.domain.Order;
+import fr.yanni.mariopizza.core.domain.Order_line;
 import fr.yanni.mariopizza.core.domain.Pizza;
+import fr.yanni.mariopizza.core.domain.Users;
 import fr.yanni.mariopizza.core.dto.PizzaDTO;
+import fr.yanni.mariopizza.core.dto.UsersDTO;
 import fr.yanni.mariopizza.core.dto.mapper.PizzaMapper;
+import fr.yanni.mariopizza.core.dto.mapper.UsersMapper;
 
 @SpringBootTest
 class MarioPizzaApplicationTests {
@@ -68,7 +73,7 @@ class MarioPizzaApplicationTests {
 	}
 
 	@Test
-	public void testDtoToEntity() {
+	public void testDtoToEntity1() {
 		PizzaDTO dto = new PizzaDTO();
 		dto.setId((short) 2);
 		dto.setName("Pepperoni");
@@ -91,4 +96,75 @@ class MarioPizzaApplicationTests {
 		Boolean result = PizzaMapper.booleanMethod();
 		assertNull(result);
 	}
+
+	@Test
+	public void testUsersToDto() {
+		Users users = new Users();
+		users.setId((short) 1);
+		users.setUsername("john_doe");
+		users.setPassword("password");
+		users.setFirstname("John");
+		users.setLastname("Doe");
+		users.setAddress("123 Main St");
+
+		UsersDTO dto = UsersMapper.usersToDto(users);
+
+		assertNotNull(dto);
+		assertEquals((short) 1, dto.getId());
+		assertEquals("john_doe", dto.getUsername());
+		assertNull(dto.getPassword());
+		assertEquals("John", dto.getFirstname());
+		assertEquals("Doe", dto.getLastname());
+		assertEquals("123 Main St", dto.getAddress());
+	}
+
+	@Test
+	public void testDtoToEntity() {
+		UsersDTO dto = new UsersDTO();
+		dto.setId((short) 2);
+		dto.setUsername("jane_smith");
+		dto.setPassword("password");
+		dto.setFirstname("Jane");
+		dto.setLastname("Smith");
+		dto.setAddress("456 Elm St");
+
+		Users entity = UsersMapper.dtoToEntity(dto);
+
+		// Verification creation Users
+		assertNotNull(entity);
+		assertEquals((short) 2, entity.getId());
+		assertEquals("jane_smith", entity.getUsername());
+		assertEquals("password", entity.getPassword());
+		assertEquals("Jane", entity.getFirstname());
+		assertEquals("Smith", entity.getLastname());
+		assertEquals("456 Elm St", entity.getAddress());
+	}
+
+	@Test
+	public void testDtoToEntityWithNullInput() {
+		Users entity = UsersMapper.dtoToEntity(null);
+
+		assertNull(entity);
+	}
+
+	@Test
+	void testOrderToDto() {
+		Order order = new Order();
+		order.setUsr_id((short) 1);
+		order.setTotal_amount(25.0);
+
+		// Créer des orders
+		List<Order_line> orderLines = new ArrayList<>();
+		Order_line orderLine1 = new Order_line();
+		orderLine1.setPiz_id((short) 1);
+		orderLine1.setQuantity((short) 2);
+		orderLines.add(orderLine1);
+
+		Order_line orderLine2 = new Order_line();
+		orderLine2.setPiz_id((short) 2);
+		orderLine2.setQuantity((short) 3);
+		orderLines.add(orderLine2);
+
+	}
+
 }
