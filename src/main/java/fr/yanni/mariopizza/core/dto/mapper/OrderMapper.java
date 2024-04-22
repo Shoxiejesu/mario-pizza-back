@@ -61,8 +61,6 @@ public class OrderMapper {
 			dto = new Order_lineDTO();
 			dto.setPiz_id(orderLine.getPiz_id());
 			dto.setQuantity(orderLine.getQuantity());
-			// Vous pouvez également définir l'identifiant de l'ordre dans la ligne de
-			// commande si nécessaire
 			dto.setOrd_id(orderLine.getOrder().getId());
 		}
 		return dto;
@@ -74,14 +72,12 @@ public class OrderMapper {
 			entity = new Order_line();
 			entity.setPiz_id(dto.getPiz_id());
 			entity.setQuantity(dto.getQuantity());
-			// Assurez-vous de gérer l'association avec l'ordre ici si nécessaire
 		}
 		return entity;
 	}
 
 	public Order getOrderById(Short id) {
-		// Code pour récupérer l'objet Order à partir de son ID
-		OrderService orderService = new OrderService(); // Supposons que vous avez un service OrderService
+		OrderService orderService = new OrderService();
 
 		Order order = orderService.getOrderById(id);
 
@@ -103,7 +99,6 @@ public class OrderMapper {
 		if (dtos != null) {
 			for (Order_lineDTO dto : dtos) {
 				Order_line orderLine = dtoToOrderLine(dto);
-				// Assurez-vous que chaque ligne de commande est associée à l'ordre
 				orderLine.setOrder(order);
 				orderLines.add(orderLine);
 			}

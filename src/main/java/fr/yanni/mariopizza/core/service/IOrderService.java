@@ -6,6 +6,6 @@ public interface IOrderService {
 
 	Order save(Order order);
 
-	Order getOrderById(Short id); // Ajout de la méthode getOrderById
+	Order getOrderById(Short id);
 
 }
