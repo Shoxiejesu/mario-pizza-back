@@ -17,12 +17,23 @@ import fr.yanni.mariopizza.core.service.IOrderService;
 @RequestMapping("/order")
 public class OrderController {
 
+	/**
+	 * Autowired dependency for accessing order-related services.
+	 */
 	@Autowired
 	private IOrderService orderService;
 
+	/**
+	 * Autowired dependency for mapping between OrderDTO and Order entities.
+	 */
 	@Autowired
 	private OrderMapper orderMapper;
 
+	/**
+	 *
+	 * @param order The OrderDTO representing the new order to be saved.
+	 * @return The OrderDTO of the saved order.
+	 */
 	@PostMapping("/")
 	public OrderDTO save(@RequestBody final OrderDTO order) {
 		Order newOrder = orderMapper.dtoToEntity(order);

@@ -59,17 +59,22 @@ public final class AuthController {
 	@Autowired
 	private UserDetailsServiceImpl userService;
 
+	/**
+	 *
+	 *
+	 * @param signUpRequest The request body containing user signup details.
+	 * @return ResponseEntity containing JWT token, user information, and refresh
+	 *         token upon successful registration. Returns a bad request response if
+	 *         the username is already taken.
+	 */
 	@PostMapping("/signup")
-	public ResponseEntity<?> registerUser(@RequestBody SignupRequest signUpRequest) {
-		// Vérifiez si le nom d'utilisateur est déjà pris
+	public ResponseEntity<?> registerUser(@RequestBody final SignupRequest signUpRequest) {
 		if (userService.existsByUsername(signUpRequest.getUsername())) {
 			return ResponseEntity.badRequest().body("Error: Username is already taken!");
 		}
 
-		// Encodez le mot de passe avec BCrypt
 		String encodedPassword = new BCryptPasswordEncoder().encode(signUpRequest.getPassword());
 
-		// Créez un nouvel utilisateur avec les informations fournies
 		User user = new User();
 		user.setUsername(signUpRequest.getUsername());
 		user.setPassword(encodedPassword);
@@ -77,18 +82,14 @@ public final class AuthController {
 		user.setLastname(signUpRequest.getLastname());
 		user.setAddress(signUpRequest.getAddress());
 
-		// Sauvegardez les détails de l'utilisateur
 		userService.save(user);
 
 		userService.addUserToRole(user.getId(), Long.valueOf(1));
 
-		// Générez le token JWT
 		String jwt = tokenProvider.generateToken(signUpRequest.getUsername());
 
-		// Créez le refresh token
 		RefreshToken refreshToken = refreshTokenService.createRefreshToken(user.getId());
 
-		// Retournez la réponse avec le token JWT et le refresh token
 		return ResponseEntity
 				.ok(new JwtResponse(jwt, tokenProvider.getExpiryDate(jwt), new UserDto(user), refreshToken.getToken()));
 	}

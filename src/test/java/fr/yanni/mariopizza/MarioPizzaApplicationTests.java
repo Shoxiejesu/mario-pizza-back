@@ -32,17 +32,17 @@ class MarioPizzaApplicationTests {
 		Pizza pizza1 = new Pizza();
 		pizza1.setId((short) 1);
 		pizza1.setName("Margherita");
-		pizza1.setDescription("Tomato, mozzarella, basil");
-		pizza1.setPrice(10.0);
+		pizza1.setDescription("Sauce tomate à l'origan et mozzarella");
+		pizza1.setPrice(7.9);
 		pizza1.setImage("margherita.jpg");
 		pizzas.add(pizza1);
 
 		Pizza pizza2 = new Pizza();
 		pizza2.setId((short) 2);
-		pizza2.setName("Pepperoni");
-		pizza2.setDescription("Tomato, mozzarella, pepperoni");
-		pizza2.setPrice(12.0);
-		pizza2.setImage("pepperoni.jpg");
+		pizza2.setName("Campagnarde");
+		pizza2.setDescription("Crème fraîche légère, mozzarella, lardons, oignons rouges frais et champignons frais");
+		pizza2.setPrice(10.0);
+		pizza2.setImage("campagnard.jpg");
 		pizzas.add(pizza2);
 
 		List<PizzaDTO> dtos = PizzaMapper.pizzasToDtos(pizzas);
@@ -50,7 +50,7 @@ class MarioPizzaApplicationTests {
 		assertNotNull(dtos);
 		assertEquals(2, dtos.size());
 		assertEquals("Margherita", dtos.get(0).getName());
-		assertEquals("Pepperoni", dtos.get(1).getName());
+		assertEquals("Campagnarde", dtos.get(1).getName());
 	}
 
 	@Test
@@ -58,8 +58,8 @@ class MarioPizzaApplicationTests {
 		Pizza pizza = new Pizza();
 		pizza.setId((short) 1);
 		pizza.setName("Margherita");
-		pizza.setDescription("Tomato, mozzarella, basil");
-		pizza.setPrice(10.0);
+		pizza.setDescription("Sauce tomate à l'origan et mozzarella");
+		pizza.setPrice(7.9);
 		pizza.setImage("margherita.jpg");
 
 		PizzaDTO dto = PizzaMapper.pizzaToDto(pizza);
@@ -67,8 +67,8 @@ class MarioPizzaApplicationTests {
 		assertNotNull(dto);
 		assertEquals((short) 2, dto.getId());
 		assertEquals("Margherita", dto.getName());
-		assertEquals("Tomato, mozzarella, basil", dto.getDescription());
-		assertEquals(10.0, dto.getPrice(), 0.001);
+		assertEquals("Sauce tomate à l'origan et mozzarella", dto.getDescription());
+		assertEquals(7.9, dto.getPrice(), 0.001);
 		assertEquals("margherita.jpg", dto.getImage());
 	}
 
@@ -76,8 +76,8 @@ class MarioPizzaApplicationTests {
 	public void testDtoToEntity1() {
 		PizzaDTO dto = new PizzaDTO();
 		dto.setId((short) 2);
-		dto.setName("Pepperoni");
-		dto.setDescription("Tomato, mozzarella, pepperoni");
+		dto.setName("Campagnarde");
+		dto.setDescription("Crème fraîche légère, mozzarella, lardons, oignons rouges frais et champignons frais");
 		dto.setPrice(12.0);
 		dto.setImage("pepperoni.jpg");
 
@@ -85,10 +85,11 @@ class MarioPizzaApplicationTests {
 
 		assertNotNull(entity);
 		assertEquals((short) 2, entity.getId());
-		assertEquals("Pepperoni", entity.getName());
-		assertEquals("Tomato, mozzarella, pepperoni", entity.getDescription());
+		assertEquals("Campagnarde", entity.getName());
+		assertEquals("Crème fraîche légère, mozzarella, lardons, oignons rouges frais et champignons frais",
+				entity.getDescription());
 		assertEquals(12.0, entity.getPrice(), 0.001);
-		assertEquals("pepperoni.jpg", entity.getImage());
+		assertEquals("campagnarde.jpg", entity.getImage());
 	}
 
 	@Test
@@ -101,43 +102,43 @@ class MarioPizzaApplicationTests {
 	public void testUsersToDto() {
 		Users users = new Users();
 		users.setId((short) 1);
-		users.setUsername("john_doe");
-		users.setPassword("password");
-		users.setFirstname("John");
-		users.setLastname("Doe");
-		users.setAddress("123 Main St");
+		users.setUsername("PiotS");
+		users.setPassword("piot12345");
+		users.setFirstname("Stephane");
+		users.setLastname("Piotrowski");
+		users.setAddress("17 rue Fenelon");
 
 		UsersDTO dto = UsersMapper.usersToDto(users);
 
 		assertNotNull(dto);
 		assertEquals((short) 1, dto.getId());
-		assertEquals("john_doe", dto.getUsername());
+		assertEquals("PiotS", dto.getUsername());
 		assertNull(dto.getPassword());
-		assertEquals("John", dto.getFirstname());
-		assertEquals("Doe", dto.getLastname());
-		assertEquals("123 Main St", dto.getAddress());
+		assertEquals("Stephane", dto.getFirstname());
+		assertEquals("Piotrowski", dto.getLastname());
+		assertEquals("17 rue Fenelon", dto.getAddress());
 	}
 
 	@Test
 	public void testDtoToEntity() {
 		UsersDTO dto = new UsersDTO();
 		dto.setId((short) 2);
-		dto.setUsername("jane_smith");
-		dto.setPassword("password");
-		dto.setFirstname("Jane");
-		dto.setLastname("Smith");
-		dto.setAddress("456 Elm St");
+		dto.setUsername("kb9");
+		dto.setPassword("kb912345");
+		dto.setFirstname("Karim");
+		dto.setLastname("Benzema");
+		dto.setAddress("36 rue de Tournai");
 
 		Users entity = UsersMapper.dtoToEntity(dto);
 
 		// Verification creation Users
 		assertNotNull(entity);
 		assertEquals((short) 2, entity.getId());
-		assertEquals("jane_smith", entity.getUsername());
-		assertEquals("password", entity.getPassword());
-		assertEquals("Jane", entity.getFirstname());
-		assertEquals("Smith", entity.getLastname());
-		assertEquals("456 Elm St", entity.getAddress());
+		assertEquals("kb9", entity.getUsername());
+		assertEquals("kb912345", entity.getPassword());
+		assertEquals("Karim", entity.getFirstname());
+		assertEquals("Benzema", entity.getLastname());
+		assertEquals("36 rue de Tournai", entity.getAddress());
 	}
 
 	@Test
