@@ -62,7 +62,6 @@ public class User {
 	 * Construct a new User.
 	 *
 	 * @param pUsername the username
-	 * @param pEmail    the email
 	 * @param pPassword the password
 	 */
 	public User(final String pUsername, final String pPassword) {
@@ -148,7 +147,7 @@ public class User {
 	}
 
 	/**
-	 * @param pPassword the password to set
+	 * @param pAddress the pAddress to set
 	 */
 	public void setAddress(final String pAddress) {
 		this.address = pAddress;

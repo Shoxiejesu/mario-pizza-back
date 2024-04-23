@@ -14,22 +14,25 @@ import fr.yanni.mariopizza.core.service.IUsersService;
 @CrossOrigin
 public class UsersService implements IUsersService {
 
+	/**
+	 * Autowired field for the Users repository.
+	 */
 	@Autowired
 	private IUsersRepository usersRepo;
 
 	@Override
-	public Users save(final Users users) {
+	public final Users save(final Users users) {
 		return usersRepo.saveAndFlush(users);
 	}
 
 	@Override
-	public Users getUserByUsername(String username) {
+	public final Users getUserByUsername(final String username) {
 		Optional<Users> userOptional = usersRepo.findByUsername(username);
 		return userOptional.orElse(null);
 	}
 
 	@Override
-	public Short getUserIdByUsername(String username) {
+	public final Short getUserIdByUsername(final String username) {
 		Users user = getUserByUsername(username);
 		if (user != null) {
 			return user.getId();

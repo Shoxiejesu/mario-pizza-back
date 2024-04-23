@@ -14,16 +14,19 @@ import fr.yanni.mariopizza.core.service.IOrderService;
 @CrossOrigin
 public class OrderService implements IOrderService {
 
+	/**
+	 * Autowired field for the Order repository.
+	 */
 	@Autowired
 	private IOrderRepository orderRepo;
 
 	@Override
-	public Order save(final Order order) {
+	public final Order save(final Order order) {
 		return orderRepo.saveAndFlush(order);
 	}
 
 	@Override
-	public Order getOrderById(Short id) {
+	public final Order getOrderById(final Short id) {
 		Optional<Order> optionalOrder = orderRepo.findById(id);
 		return optionalOrder.orElse(null);
 	}

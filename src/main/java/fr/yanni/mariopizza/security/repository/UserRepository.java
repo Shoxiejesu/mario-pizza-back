@@ -26,7 +26,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	 */
 	boolean existsByUsername(String username);
 
+	/**
+	 * Saves the user to the repository.
+	 *
+	 * @param user The user to be saved.
+	 * @return The saved user.
+	 */
 	@Override
-	User save(User user);
+	<S extends User> S save(S entity);
 
 }

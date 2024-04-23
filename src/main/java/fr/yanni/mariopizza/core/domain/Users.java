@@ -50,21 +50,22 @@ public class Users {
 	/**
 	 * Parameterized constructor.
 	 *
-	 * @param id        The unique ID of the user.
-	 * @param username  The username of the user.
-	 * @param password  The password of the user.
-	 * @param firstname The first name of the user.
-	 * @param lastname  The last name of the user.
-	 * @param address   The address of the user.
+	 * @param pId        The unique pId of the user.
+	 * @param pUsername  The pUsername of the user.
+	 * @param pPassword  The pPassword of the user.
+	 * @param pFirstname The pFirstname of the user.
+	 * @param pLastname  The pLastname of the user.
+	 * @param pAddress   The pAddress of the user.
 	 */
-	public Users(final Short id, String username, String password, String firstname, String lastname, String address) {
+	public Users(final Short pId, final String pUsername, final String pPassword, final String pFirstname,
+			final String pLastname, final String pAddress) {
 		super();
-		this.id = id;
-		this.username = username;
-		this.password = password;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.address = address;
+		this.id = pId;
+		this.username = pUsername;
+		this.password = pPassword;
+		this.firstname = pFirstname;
+		this.lastname = pLastname;
+		this.address = pAddress;
 	}
 
 	/**
@@ -79,10 +80,10 @@ public class Users {
 	/**
 	 * Setter for ID.
 	 *
-	 * @param id The ID to set.
+	 * @param pId The pId to set.
 	 */
-	public void setId(final Short id) {
-		this.id = id;
+	public void setId(final Short pId) {
+		this.id = pId;
 	}
 
 	/**
@@ -97,10 +98,10 @@ public class Users {
 	/**
 	 * Setter for username.
 	 *
-	 * @param username The username to set.
+	 * @param pUsername The pUsername to set.
 	 */
-	public void setUsername(final String username) {
-		this.username = username;
+	public void setUsername(final String pUsername) {
+		this.username = pUsername;
 	}
 
 	/**
@@ -115,10 +116,10 @@ public class Users {
 	/**
 	 * Setter for password.
 	 *
-	 * @param password The password to set.
+	 * @param pPassword The pPassword to set.
 	 */
-	public void setPassword(final String password) {
-		this.password = password;
+	public void setPassword(final String pPassword) {
+		this.password = pPassword;
 	}
 
 	/**
@@ -133,10 +134,10 @@ public class Users {
 	/**
 	 * Setter for first name.
 	 *
-	 * @param firstname The first name to set.
+	 * @param pFirstname The pFirstname to set.
 	 */
-	public void setFirstname(final String firstname) {
-		this.firstname = firstname;
+	public void setFirstname(final String pFirstname) {
+		this.firstname = pFirstname;
 	}
 
 	/**
@@ -151,10 +152,10 @@ public class Users {
 	/**
 	 * Setter for last name.
 	 *
-	 * @param lastname The last name to set.
+	 * @param pLastname The pLastname to set.
 	 */
-	public void setLastname(final String lastname) {
-		this.lastname = lastname;
+	public void setLastname(final String pLastname) {
+		this.lastname = pLastname;
 	}
 
 	/**
@@ -169,10 +170,10 @@ public class Users {
 	/**
 	 * Setter for address.
 	 *
-	 * @param address The address to set.
+	 * @param pAddress The pAddress to set.
 	 */
-	public void setAddress(final String address) {
-		this.address = address;
+	public void setAddress(final String pAddress) {
+		this.address = pAddress;
 	}
 
 	/**

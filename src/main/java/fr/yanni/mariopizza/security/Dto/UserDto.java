@@ -46,12 +46,18 @@ public class UserDto {
 
 	}
 
+	/**
+	 * @return the password
+	 */
 	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	/**
+	 * @param pPassword the pPassword to set
+	 */
+	public void setPassword(final String pPassword) {
+		this.password = pPassword;
 	}
 
 	/**
@@ -104,7 +110,7 @@ public class UserDto {
 	}
 
 	/**
-	 * @param pLastname the lastname to set
+	 * @param pAddress the pAddress to set
 	 */
 	public void setAddress(final String pAddress) {
 		this.address = pAddress;

@@ -19,6 +19,14 @@ public interface IUsersService {
 	 */
 	Users getUserByUsername(String username);
 
+	/**
+	 * Retrieves the user ID associated with the given username.
+	 *
+	 * @param username The username for which to retrieve the user ID.
+	 * @return The user ID corresponding to the provided username, or null if the
+	 *         username is not found.
+	 */
+
 	Short getUserIdByUsername(String username);
 
 }

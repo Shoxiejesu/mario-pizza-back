@@ -26,10 +26,9 @@ public class PizzaController {
 	private IPizzaService pizzaService;
 
 	/**
-	 * Get a pizza.
+	 * Retrieves all pizzas and returns them as a list of PizzaDTO objects.
 	 *
-	 * @param pizza the pizza as a PizzaDTO
-	 * @return the updated pizza
+	 * @return A list of PizzaDTO objects representing all pizzas.
 	 */
 
 	@GetMapping("/")

@@ -43,7 +43,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		return user;
 	}
 
-	public Long getUserIdByUsername(String username) {
+	/**
+	 * Retrieves the user ID associated with the given username.
+	 *
+	 * @param username The username for which to retrieve the user ID.
+	 * @return The user ID corresponding to the provided username.
+	 * @throws UsernameNotFoundException if no user is found with the given
+	 *                                   username.
+	 */
+	public Long getUserIdByUsername(final String username) {
 		User user = userRepository.findByUsername(username)
 				.orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
 		return user.getId();
@@ -60,30 +68,48 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		return userRepository.save(user);
 	}
 
-	public boolean existsByUsername(String username) {
+	/**
+	 * Checks if a user exists with the given username.
+	 *
+	 * @param username The username to check for existence.
+	 * @return {@code true} if a user with the given username exists, {@code false}
+	 *         otherwise.
+	 */
+	public boolean existsByUsername(final String username) {
 		return userRepository.existsByUsername(username);
 
 	}
 
-	public void save(User user) {
+	/**
+	 * Saves the user to the repository.
+	 *
+	 * @param user The user to be saved.
+	 */
+
+	public void save(final User user) {
 		userRepository.save(user);
 
 	}
 
-	public void addUserToRole(Long userId, Long roleId) {
+	/**
+	 * Adds a role with the specified ID to the user with the given ID.
+	 *
+	 * @param userId The ID of the user to whom the role will be added.
+	 * @param roleId The ID of the role to be added to the user.
+	 * @throws UsernameNotFoundException if no user is found with the given ID.
+	 */
+
+	public void addUserToRole(final Long userId, final Long roleId) {
 		User user = userRepository.findById(userId)
 				.orElseThrow(() -> new UsernameNotFoundException("User not found with ID: " + userId));
 
-		// Créez un objet Role avec l'ID spécifié
 		Role role = new Role();
-		role.setId(roleId.intValue()); // Convertissez Long en Integer
+		role.setId(roleId.intValue());
 
-		// Ajoutez le rôle à l'utilisateur
 		Set<Role> roles = user.getRoles();
 		roles.add(role);
 		user.setRoles(roles);
 
-		// Enregistrez les modifications dans la base de données
 		userRepository.save(user);
 	}
 

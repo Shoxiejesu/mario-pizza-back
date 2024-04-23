@@ -39,19 +39,20 @@ public class Pizza {
 	/**
 	 * Parameterized constructor.
 	 *
-	 * @param id          The unique ID of the pizza.
-	 * @param name        The name of the pizza.
-	 * @param description The description of the pizza.
-	 * @param image       The URL for retrieving the picture of the pizza.
-	 * @param price       The price of the pizza.
+	 * @param pId          The unique pId of the pizza.
+	 * @param pName        The pName of the pizza.
+	 * @param pDescription The pDescription of the pizza.
+	 * @param pImage       The pImage for retrieving the picture of the pizza.
+	 * @param pPrice       The pPrice of the pizza.
 	 */
-	public Pizza(final Short id, String name, String description, String image, Double price) {
+	public Pizza(final Short pId, final String pName, final String pDescription, final String pImage,
+			final Double pPrice) {
 		super();
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.image = image;
-		this.price = price;
+		this.id = pId;
+		this.name = pName;
+		this.description = pDescription;
+		this.image = pImage;
+		this.price = pPrice;
 	}
 
 	/**
@@ -73,10 +74,10 @@ public class Pizza {
 	/**
 	 * Setter for ID.
 	 *
-	 * @param id The ID to set.
+	 * @param pId The pId to set.
 	 */
-	public void setId(final Short id) {
-		this.id = id;
+	public void setId(final Short pId) {
+		this.id = pId;
 	}
 
 	/**
@@ -91,10 +92,10 @@ public class Pizza {
 	/**
 	 * Setter for name.
 	 *
-	 * @param name The name to set.
+	 * @param pName The pName to set.
 	 */
-	public void setName(final String name) {
-		this.name = name;
+	public void setName(final String pName) {
+		this.name = pName;
 	}
 
 	/**
@@ -109,10 +110,10 @@ public class Pizza {
 	/**
 	 * Setter for description.
 	 *
-	 * @param description The description to set.
+	 * @param pDescription The pDescription to set.
 	 */
-	public void setDescription(final String description) {
-		this.description = description;
+	public void setDescription(final String pDescription) {
+		this.description = pDescription;
 	}
 
 	/**
@@ -127,10 +128,10 @@ public class Pizza {
 	/**
 	 * Setter for image URL.
 	 *
-	 * @param image The URL to set.
+	 * @param pImage The pImage to set.
 	 */
-	public void setImage(final String image) {
-		this.image = image;
+	public void setImage(final String pImage) {
+		this.image = pImage;
 	}
 
 	/**
@@ -145,10 +146,10 @@ public class Pizza {
 	/**
 	 * Setter for price.
 	 *
-	 * @param price The price to set.
+	 * @param pPrice The pPrice to set.
 	 */
-	public void setPrice(final Double price) {
-		this.price = price;
+	public void setPrice(final Double pPrice) {
+		this.price = pPrice;
 	}
 
 	/**

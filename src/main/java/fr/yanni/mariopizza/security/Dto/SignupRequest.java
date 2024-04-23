@@ -1,68 +1,121 @@
 package fr.yanni.mariopizza.security.Dto;
 
 public class SignupRequest {
+
+	/** the username send from the caller. */
 	private String username;
+
+	/** the password send from the caller. */
 	private String password;
+
+	/** the firstname send from the caller. */
 	private String firstname;
+
+	/** the lastname send from the caller. */
 	private String lastname;
+
+	/** the address send from the caller. */
 	private String address;
 
+	/**
+	 *
+	 */
 	public SignupRequest() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public SignupRequest(String username, String password, String firstname, String lastname, String address) {
+	/**
+	 *
+	 *
+	 * @param pUsername  the pUsername for the signup request
+	 * @param pPassword  the pPassword for the signup request
+	 * @param pFirstname the pFirstname for the signup request
+	 * @param pLastname  the pLastname for the signup request
+	 * @param pAddress   the pAddress for the signup request
+	 */
+	public SignupRequest(final String pUsername, final String pPassword, final String pFirstname,
+			final String pLastname, final String pAddress) {
 		super();
-		this.username = username;
-		this.password = password;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.address = address;
+		this.username = pUsername;
+		this.password = pPassword;
+		this.firstname = pFirstname;
+		this.lastname = pLastname;
+		this.address = pAddress;
 	}
 
+	/**
+	 * @return the username
+	 */
 	public String getUsername() {
 		return username;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	/**
+	 * @param pUsername the pUsername to set
+	 */
+	public void setUsername(final String pUsername) {
+		this.username = pUsername;
 	}
 
+	/**
+	 * @return the password
+	 */
 	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	/**
+	 * @param pPassword the pPassword to set
+	 */
+	public void setPassword(final String pPassword) {
+		this.password = pPassword;
 	}
 
+	/**
+	 * @return the firstname
+	 */
 	public String getsetFirstname() {
 		return firstname;
 	}
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	/**
+	 * @param pFirstname the pFirstname to set
+	 */
+	public void setFirstname(final String pFirstname) {
+		this.firstname = pFirstname;
 	}
 
+	/**
+	 * @return the lastname
+	 */
 	public String getLastname() {
 		return lastname;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	/**
+	 * @param pLastname the pLastname to set
+	 */
+	public void setLastname(final String pLastname) {
+		this.lastname = pLastname;
 	}
 
+	/**
+	 * @return the address
+	 */
 	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	/**
+	 * @param pAddress the pAddress to set
+	 */
+	public void setAddress(final String pAddress) {
+		this.address = pAddress;
 	}
 
 	@Override
-	public String toString() {
+	public final String toString() {
 		return "SignupRequest [username=" + username + ", password=" + password + ", firstName=" + firstname
 				+ ", lastName=" + lastname + ", address=" + address + "]";
 	}
