@@ -88,10 +88,11 @@ public final class AuthController {
 
 		String jwt = tokenProvider.generateToken(signUpRequest.getUsername());
 
+		refreshTokenService.deleteExpired();
 		RefreshToken refreshToken = refreshTokenService.createRefreshToken(user.getId());
 
-		return ResponseEntity
-				.ok(new JwtResponse(jwt, tokenProvider.getExpiryDate(jwt), new UserDto(user), refreshToken.getToken()));
+		return ResponseEntity.ok(new JwtResponse(tokenHeader + " " + jwt, tokenProvider.getExpiryDate(jwt),
+				new UserDto(user), refreshToken.getToken()));
 	}
 
 	/**

@@ -36,6 +36,7 @@ public class JwtResponse {
 		this.expiration = pExpiration;
 		this.user = pUser;
 		this.setRefreshToken(pRefreshToken);
+
 	}
 
 	/**
